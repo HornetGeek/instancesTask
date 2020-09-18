@@ -1,0 +1,24 @@
+{% extends './layout.html' %}
+
+{% block content %}
+
+<h1 class="cover-heading m-5">Now you have...</h1>
+
+<div class="card bg-dark mb-3 text-center">
+    <div class="card  bg-dark mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Name: {{ container.name }}</h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>id : {{container.id}}</li>
+          <li>status : {{container.status}}</li>
+        </ul>
+        <button type="button" class="btn btn-lg btn-block btn-primary">Stop</button>
+        <button type="button" class="btn btn-lg btn-block btn-primary">ssh connect</button>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}

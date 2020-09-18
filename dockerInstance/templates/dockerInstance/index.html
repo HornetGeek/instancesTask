@@ -1,0 +1,37 @@
+{% extends './layout.html' %}
+
+{% block content %}
+<main role="main" class="inner cover m-5">
+  <div class="w-50 d-inline float-left">
+      <h1 class="cover-heading d-inline w-50">Create your Instance.</h1>
+  </div>
+  <div class="w-25 d-inline float-right">
+    <p class="lead w-25 d-inline float-right">
+      <a href="{% url 'create' %}" class="btn btn-lg btn-secondary d-inline float-right">Create</a>
+    </p>
+  </div>
+</main>
+
+{% for container in containers %}
+<div class="card bg-dark mb-3 text-center">
+  <div class="card  bg-dark mb-4 shadow-sm">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">Name: {{ container.name }}</h4>
+    </div>
+    <div class="card-body">
+
+      <ul class="list-unstyled mt-3 mb-4 float-left d-inline">
+        <li>id : {{container.id}}</li>
+        <li class="float-left">status : {{container.status}}</li>
+      </ul>
+      <form action="/stop" method="POST" class="float-right">
+        {% csrf_token %}
+        <input type="hidden" id="containerObject" name="containerObject" value="{{ container.name }}">
+        <input type="submit" class="btn btn-lg btn-block btn-primary" value="Stop">
+      </form>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}
